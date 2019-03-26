@@ -1,3 +1,38 @@
+"""
+Dillon Hess
+dhess2@binghamton.edu
+Lab section# A54
+CA: Vladimir
+Assignment 7
+"""
+
+"""
+Write a complete program that, given a literal list of tuples consisting of
+(name, list of grades) pairs  (i.e., the first line of your main should
+simply be:   grade_list = followed by the data below), prints out a table
+showing the number of scores and score average for each person, generated
+in two different ways	
+
+Output to monitor:
+  name - (str)
+  number_of_grades - (int)
+  average_grade - (float)
+
+Tasks allocated to functions:
+  get_sorted_key_list() - function to turn a list of tuples into a dictionary
+  	filled with names as keys and grades as values
+
+  compute_average() - computes average for any amount of numbers within a list
+
+  get_sorted_list_of_tuples() - takes an unsorted list of tuples and returns
+  	the list sorted alphabetically
+"""    
+
+# DEFINE CONSTANTS
+
+AVERAGE_WHEN_NO_ITEMS = 0.00
+
+# index values to be used in dictionary calls
 FIRST_INDEX = 0
 SECOND_INDEX = 1
 
@@ -59,7 +94,8 @@ def compute_average(number_list):
 	how_many_numbers = len(number_list)
 	for num in number_list:
 		average += num
-	average = average / how_many_numbers if how_many_numbers != 0 else 0.00
+	average = average / how_many_numbers if how_many_numbers != 0 else\
+	  AVERAGE_WHEN_NO_ITEMS
 
 
 	return average
@@ -70,7 +106,8 @@ def get_sorted_list_of_tuples(unsorted_list):
 		return sorted_list
 
 def main():
-	grade_list = [ ('Zaphod', [33, 20]), ('Zaphod', [75, 48]), ('Slartibartfast',[]),
+	grade_list = [ ('Zaphod', [33, 20]), ('Zaphod', [75, 48]),
+      ('Slartibartfast',[]),
 
       ('Trillian', [98, 88]), ('Trillian', [97, 77]), ('Slartibartfast', []),
 
@@ -124,7 +161,8 @@ def main():
 		#print(sorted_list_of_grades[i])
 		name = sorted_list_of_grades[i][FIRST_INDEX]
 		number_of_grades = len(sorted_list_of_grades[i][SECOND_INDEX])
-		average_grade = compute_average(sorted_list_of_grades[i][SECOND_INDEX])
+		average_grade = compute_average(sorted_list_of_grades[i]\
+		  [SECOND_INDEX])
 		print(" %15s %15d %25.2f" % (name, number_of_grades, average_grade))
 
 

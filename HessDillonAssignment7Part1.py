@@ -41,6 +41,7 @@ def tuple_list_to_dict(input_list):
   new_grade_dict = {}
   new_tuple = ()
 
+  
   for i in range(len(input_list)):
   	current_tuple = input_list[i]
   	#('Zaphod', [33, 20])print(current_tuple)
@@ -75,9 +76,11 @@ def tuple_list_to_dict(input_list):
   	key = current_tuple[0]
   	grades = current_tuple[SECOND_INDEX]
   	new_grade_dict[key] = grades
+  	
   return new_grade_dict
 
 
+# Takes a dictionary as an argument and returns a list sorted by keys 
 def get_sorted_key_list(dictionary_to_be_sorted):
 	list_to_be_sorted = list(dictionary_to_be_sorted.keys())
 
@@ -89,6 +92,8 @@ def get_sorted_key_list(dictionary_to_be_sorted):
 
 	return sorted_list
 
+# Computes and returns the average of numbers within a list passed to
+# the function
 def compute_average(number_list):
 	average = 0
 	how_many_numbers = len(number_list)
@@ -100,6 +105,7 @@ def compute_average(number_list):
 
 	return average
 
+# Takes an unsorted list and returns a sorted list alphabetically
 def get_sorted_list_of_tuples(unsorted_list):
 		sorted_list = sorted(unsorted_list)
 		#print(sorted(unsorted_list))
@@ -138,7 +144,8 @@ def main():
 	print("""\tName\t\tGrade Count\t\t Average Grade
 ---------------------------------------------------------------\n""" )
 	
-	
+	# Iterates over all sorted keys of the list and prints name, avg grade, and
+	# number of grades
 	for name in list_of_names :
 		number_of_grades = len(grade_dict[name])
 		average_grade = compute_average(grade_dict[name])
@@ -148,15 +155,19 @@ def main():
 
 
 #======================================= PART 2 ============================
-
+        # Turns the original dictionary into a list of items
 	list_of_grades = list(grade_dict.items())
 	#print(type(list_of_grades))
 	#print(list_of_grades)
+
+	# Sorts list to be outputted
 	sorted_list_of_grades = get_sorted_list_of_tuples(list_of_grades)
 	#print(sorted_list_of_grades)
 
 	print("""\n\n\tName\t\tGrade Count\t\t Average Grade
 ---------------------------------------------------------------\n""" )
+	# Iterates over all sorted keys of the list and prints name, avg grade, and
+	# number of grades
 	for i in range(len(sorted_list_of_grades)) :
 		#print(sorted_list_of_grades[i])
 		name = sorted_list_of_grades[i][FIRST_INDEX]
